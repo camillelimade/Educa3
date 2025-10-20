@@ -184,25 +184,31 @@ if (!isset($_SESSION['usuario_logado']) || $_SESSION['usuario_logado'] !== true)
 								<i class="fas fa-file-pdf"></i></button>
 
 						</div>
+						<select id="filtroTurma" class="form-control" aria-label="Filtro por turma">
+							<option value="" selected>Selecione uma Turma</option>
+							<?php foreach ($turma as $idTurma => $nomeTurma) { ?>
+								<option value="<?php echo $idTurma; ?>"><?php echo $nomeTurma; ?></option>
+								<?php } ?>
+						</select>
 						<script>
 							function abrirAluno2() {
 								var urlDoPDF = "../pdf/alunoPdf.php";
 								window.open(urlDoPDF, '_blank');
 							}
 						</script>
-						
+
 						<table id="TableAlunos" style="width:100%">
-								<thead>
-									<tr>
-										<th>Id</th>
-										<th>Nome</th>
-										<th>Ano</th>
-										<th>Turma</th>
-										<th>Contato</th>
-										<th>Editar</th>
-										<th>Excluir</th>
-									</tr>
-								</thead>
+							<thead>
+								<tr>
+									<th>Id</th>
+									<th>Nome</th>
+									<th>Ano</th>
+									<th>Turma</th>
+									<th>Contato</th>
+									<th>Editar</th>
+									<th>Excluir</th>
+								</tr>
+							</thead>
 						</table>
 					</div>
 				</div>
@@ -222,17 +228,17 @@ if (!isset($_SESSION['usuario_logado']) || $_SESSION['usuario_logado'] !== true)
 									</div>
 									<div class="mb-3">
 										<label for="form-control">Nome do Aluno:</label>
-										<input type="text" class="form-control" name="NomeAluno" id="editNomeAluno" required autocomplete="off" >
+										<input type="text" class="form-control" name="NomeAluno" id="editNomeAluno" required autocomplete="off">
 									</div>
 									<div class="mb-3">
 										<label for="form-control">Ano:</label>
-										<input type="text" class="form-control" name="AnoTurma" id="editAnoTurma" required autocomplete="off" >
+										<input type="text" class="form-control" name="AnoTurma" id="editAnoTurma" required autocomplete="off">
 									</div>
 									<div class="mb-3">
 										<label for="form-control">Turma:</label>
-										<input type="text" class="form-control" name="nomeTurma" id="editNomeTurma" required autocomplete="off" >
+										<input type="text" class="form-control" name="nomeTurma" id="editNomeTurma" required autocomplete="off">
 									</div>
-									
+
 								</form>
 							</div>
 							<div class="modal-footer">
@@ -262,7 +268,7 @@ if (!isset($_SESSION['usuario_logado']) || $_SESSION['usuario_logado'] !== true)
 <script src="../JS/script.js"></script>
 <script src="../JS/popup.js"></script>
 <script src="../ArquivosExternos/icons.js"></script>
-<script src="../JS/alunos_prof.js"></script>				
+<script src="../JS/alunos_prof.js"></script>
 <script src="../lib/jquery/jquery-3.7.1.min.js"></script>
 <script src="../lib/datatables/dataTables.js"></script>
 <script src="../lib/Bootstrap 2/bootstrap.bundle.min.js"></script>
@@ -283,15 +289,15 @@ if (!isset($_SESSION['usuario_logado']) || $_SESSION['usuario_logado'] !== true)
 		const resposta = await dados.json();
 		//console.log(resposta);
 
-		if(resposta['status']){
+		if (resposta['status']) {
 			document.getElementById("msgAlerta").innerHTML = "";
 			editModal.show();
 
-			document.getElementById("editIdAluno").value = resposta['dados'].idAluno;	
+			document.getElementById("editIdAluno").value = resposta['dados'].idAluno;
 			document.getElementById("editNomeAluno").value = resposta['dados'].NomeAluno;
-			document.getElementById("editAnoTurma").value = resposta['dados'].AnoTurma;	
-			document.getElementById("editNomeTurma").value = resposta['dados'].nomeTurma;	
-		}else{
+			document.getElementById("editAnoTurma").value = resposta['dados'].AnoTurma;
+			document.getElementById("editNomeTurma").value = resposta['dados'].nomeTurma;
+		} else {
 			alert(resposta['msg']);
 		}
 	}
@@ -300,8 +306,8 @@ if (!isset($_SESSION['usuario_logado']) || $_SESSION['usuario_logado'] !== true)
 <!-- Salvando informações no banco de dados -->
 <script>
 	const formEditAlunos = document.getElementById("form-edit-alunos");
-	if(formEditAlunos){
-		formEditAlunos.addEventListener("submit", async(e) => {
+	if (formEditAlunos) {
+		formEditAlunos.addEventListener("submit", async (e) => {
 			e.preventDefault();
 			const dadosForm = new FormData(formEditAlunos);
 
@@ -312,16 +318,16 @@ if (!isset($_SESSION['usuario_logado']) || $_SESSION['usuario_logado'] !== true)
 
 			const resposta = await dados.json();
 
-			if (resposta['status']){
+			if (resposta['status']) {
 				//document.getElementById("msgAlertErroEdit").innerHTML = resposta['msg'];
 
 				document.getElementById("msgAlerta").innerHTML = resposta['msg'];
 				document.getElementById("msgAlertErroEdit").innerHTML = "";
-				formEditAlunos.reset();	
+				formEditAlunos.reset();
 				editModal.hide();
 				listarDataTables = $('#TableAlunos').DataTable();
 				listarDataTables.draw();
-			}else{
+			} else {
 				document.getElementById("msgAlertErroEdit").innerHTML = resposta['msg'];
 			}
 
@@ -337,23 +343,27 @@ if (!isset($_SESSION['usuario_logado']) || $_SESSION['usuario_logado'] !== true)
 		var confirmar = confirm("Você realmente quer apagar o registro selecionado?");
 
 		//console.log(resposta);
-		if(confirmar){
+		if (confirmar) {
 			document.getElementById("msgAlerta").innerHTML = "<div class='alert alert-success' role='alert'>Registro apagado com sucesso!</div>";
 
 			listarDataTables = $('#TableAlunos').DataTable();
 			listarDataTables.draw();
-		}else{
+		} else {
 			document.getElementById("msgAlerta").innerHTML = "<div class='alert alert-danger' role='alert'> Erro: Registro não apagado</div>";
 		}
 	}
 </script>
 
 <script>
-	new DataTable('#TableAlunos', {
+	var tabelaAlunos = new DataTable('#TableAlunos', {
 		ajax: {
-			"url": '../View/listarAlunos.php',
-			"dataType": 'JSON',
-			"error": function () {
+			url: '../View/listarAlunos.php',
+			type: 'GET',
+			data: function(d) {
+				d.turma = $('#filtroTurma').val(); // envia a turma selecionada
+			},
+			dataType: 'json',
+			error: function() {
 				alert('Não há registros para sua pesquisa');
 			}
 		},
@@ -367,9 +377,15 @@ if (!isset($_SESSION['usuario_logado']) || $_SESSION['usuario_logado'] !== true)
 			"targets": "_all",
 			"className": "dt-body-center"
 		}],
-		"lengthMenu": [[10, 15, 25, 50, 100, -1], [10, 15, 25, 50, 100, "Tudo"]],
+		"lengthMenu": [
+			[10, 15, 25, 50, 100, -1],
+			[10, 15, 25, 50, 100, "Tudo"]
+		]
 	});
-	</script>
+	$('#filtroTurma').on('change', function() {
+		tabelaAlunos.ajax.reload(); // recarrega os dados conforme a turma
+	});
+</script>
 
 </body>
 
