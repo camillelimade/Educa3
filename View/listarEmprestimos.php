@@ -30,7 +30,7 @@
     INNER JOIN turma ON aluno.Turma_idTurma = turma.IdTurma
     LEFT JOIN devolucao ON emprestimo.idEmprestimo = devolucao.emprestimo_idEmprestimo
     INNER JOIN livro ON emprestimo.livro_idLivro = livro.idLivro
-    INNER JOIN genero ON livro.Genero_idGenero = genero.idGenero";
+    INNER JOIN genero ON livro.Genero_idGenero = genero.idGenero ORDER BY emprestimo.DataEmprestimo ASC";
     
     //Acessa o if quando ha parametros de pesquisa
     if(!empty($dados_requisicao['search']['value'])) {
