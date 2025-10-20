@@ -243,21 +243,25 @@ $conn = $conexao->getConnection();
 </script>
 <script>
 	async function devolver(ID) {
-		//console.log(idLivro);
-
+	const confirmar = confirm("O livro foi realmente devolvido?");
+	if (confirmar) {
 		const dados = await fetch("../Controller/CDevolver_livro.php?id=" + ID);
-		var confirmar = confirm("O livro foi realmente devolvido?");
 
-		//console.log(resposta);
-		if(confirmar){
-			document.getElementById("msgAlerta").innerHTML = "<div class='alert alert-success' role='alert'>O livro foi devolvido com sucesso!</div>";
+		document.getElementById("msgAlerta").innerHTML = `
+			<div class='alert alert-success' role='alert'>
+				O livro foi devolvido com sucesso!
+			</div>`;
 
-			listarDataTables = $('#TableDev').DataTable();
-			listarDataTables.draw();
-		}else{
-			document.getElementById("msgAlerta").innerHTML = "<div class='alert alert-danger' role='alert'> Erro: O livro não foi devolvido!</div>";
-		}
+		const tabela = $('#TableDev').DataTable();
+		tabela.ajax.reload(null, false);  
+	} else {
+		document.getElementById("msgAlerta").innerHTML = `
+			<div class='alert alert-danger' role='alert'>
+				Erro: O livro não foi devolvido!
+			</div>`;
 	}
+}
+
 </script>
 
 <script>
