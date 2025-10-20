@@ -175,8 +175,8 @@ if (!isset($_SESSION['usuario_logado']) || $_SESSION['usuario_logado'] !== true)
 							<span id="msgAlerta"></span>
 							<h3>Tabela de Cadastro de Turmas</h3>
 							<td>
-							<button class="pdf-button" id="pdf-button" aria-label="botão pdf" onclick="abrirAluno()">
-								<i class="fas fa-file-pdf"></i></button>
+							<button class="btn btn-outline-success" id="pdf-button" aria-label="botão pdf" onclick="abrirAluno()">
+								<i class="fas fa-file-pdf"></i>  Relatório de Turmas</button>
 
 							<script>
 								function abrirAluno() {
