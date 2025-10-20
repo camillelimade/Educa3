@@ -6,6 +6,7 @@
     $conn = $conexao->getConnection();
 
     function todos_os_livros(){
+        global $conn;
         //Requisição (query)
         $sql = "SELECT
         livro.idLivro,
