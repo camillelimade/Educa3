@@ -150,18 +150,13 @@ $conn = $conexao->getConnection();
                             <a href="ativos.php"><button class="btn btn-outline-warning">Ativos</button></a>
                             <a href="pendentes.php"><button class="btn btn-outline-danger">Pendentes</button></a>
                             <a href="devolvidos.php"><button class="btn btn-outline-success">Devolvidos</button></a>
-                            <div class="table-data"> <br>
-                            <button class="pdf-button" id="pdf-button" aria-label="botão pdf" onclick="abrirAluno()">
-                                <i class="fas fa-file-pdf"></i></button>
-
                             <script>
                                 function abrirAluno() {
                                     var urlDoPDF = "../pdf/devolucaoPdf.php";
                                     window.open(urlDoPDF, '_blank');
                                 }
                             </script>
-
-                        </div>
+                            <button class="btn btn-outline-primary" id="pdf-button" aria-label="botão pdf" onclick="abrirAluno()">Relatório de Pendências</button>
                         <span id="msgAlerta"></span>
                         <table id="TableDev" style="width:100%">
 								<thead>
