@@ -146,8 +146,8 @@ $conn = $conexao->getConnection();
                     <div class="order">
                         <div class="head">
                             <h3>Devolvidos</h3>
-                            <button class="pdf-button" id="pdf-button" aria-label="botão pdf" onclick="abrirAluno()">
-                                <i class="fas fa-file-pdf"></i></button>
+                            <button class="btn btn-outline-success" id="pdf-button" aria-label="botão pdf" onclick="abrirAluno()">
+                                <i class="fas fa-file-pdf"></i>  Relatório de Empréstimos Devolvidos</button>
 
                             <script>
                                 function abrirAluno() {

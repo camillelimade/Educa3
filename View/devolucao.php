@@ -156,7 +156,6 @@ $conn = $conexao->getConnection();
                                     window.open(urlDoPDF, '_blank');
                                 }
                             </script>
-                            <button class="btn btn-outline-primary" id="pdf-button" aria-label="botão pdf" onclick="abrirAluno()">Relatório de Pendências</button>
                         <span id="msgAlerta"></span>
                         <table id="TableDev" style="width:100%">
 								<thead>
