@@ -265,36 +265,8 @@ include('../Controller/CPendencias.php'); // Inclua o arquivo CPendencias.php aq
 					</span>
 				</li>
 			</ul>
-
-			<section class="container-livros">
-				<h1 class="heading">Recomendações <span>semanais</span> </h1>
-				<div class="container-card">
-					<ul>
-						<?php
-						// Loop para exibir as recomendações da tabela 'recomendacao'
-						foreach ($livrosRecomendados as $livroRecomendado) {
-							echo '<div class="card">
-        <li>
-            <a class="no-click" href="' . $livroRecomendado["CamRec"] . '">
-                <img src="' . $livroRecomendado["CamRec"] . '" alt="">
-                <div class="card-content">
-                    <div class="nome">
-                        <section class="container-livros">
-                            <h3 class="heading">' . $livroRecomendado["LivroRec"] . '</h3>
-                            <p><b>Autor: </b>' . $livroRecomendado["AutorRec"] . '</p>
-                            <p><b>Categoria: </b>' . $livroRecomendado["CatRec"] . '</p>
-                        </section>
-                    </div>
-                </div>
-            </a>
-        </li>
-    </div>';
-						}
-						?>
-
-					</ul>
-				</div>
-			</section>
+			<br>
+			<br>
 
 			<style>
 				/* Esconde as setas para campos de entrada numérica */
