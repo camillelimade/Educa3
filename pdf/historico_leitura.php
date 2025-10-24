@@ -29,7 +29,7 @@ LEFT JOIN devolucao d ON e.idEmprestimo = d.emprestimo_idEmprestimo
 LEFT JOIN genero g ON l.Genero_idGenero = g.idGenero
 LEFT JOIN autor au ON l.autor_idAutor = au.idAutor
 LEFT JOIN idioma i ON l.Idioma_idIdioma = i.idIdioma
-WHERE a.idAluno = $aluno_id
+WHERE e.aluno_idAluno = $aluno_id OR e.prof_idProf = $aluno_id
 ORDER BY e.DataEmprestimo DESC
 ";
 
