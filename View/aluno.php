@@ -354,6 +354,16 @@ if (!isset($_SESSION['usuario_logado']) || $_SESSION['usuario_logado'] !== true)
 		}
 	}
 </script>
+<script>
+	async function pdfHistoricoAluno(idAluno){
+		// função que gera o Histórico de leitura do alunp
+		if(idAluno){
+			window.open('../pdf/historico_leitura.php?aluno=' + idAluno, '_blank');
+		}else{
+			alert('ID do aluno não encontrado.');
+		}
+	}
+</script>
 
 <script>
 	var tabelaAlunos = new DataTable('#TableAlunos', {

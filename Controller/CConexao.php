@@ -6,7 +6,7 @@ class CConexao
 {
     private $servername = "localhost";
     private $username = "root";
-    private $password = "cr701201";
+    private $password = "";
     private $dbname = "biblioteca";
     private $conn;
 
