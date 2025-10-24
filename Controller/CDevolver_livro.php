@@ -64,11 +64,11 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
         }
 
         echo "Livro devolvido com sucesso!";
-        header("Location: ../view/devolucao.php");
+        header("Location: ../View/devolucao.php");
     } catch (PDOException $e) {
         echo "Erro: " . $e->getMessage();
     }
 } else {
     echo "ID do empréstimo não fornecido.";
-    header("Location: ../view/devolucao.php");
+    header("Location: ../View/devolucao.php");
 }
