@@ -207,6 +207,7 @@ if (!isset($_SESSION['usuario_logado']) || $_SESSION['usuario_logado'] !== true)
 									<th>Contato</th>
 									<th>Editar</th>
 									<th>Excluir</th>
+									<th>Histórico</th>
 								</tr>
 							</thead>
 						</table>

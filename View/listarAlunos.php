@@ -72,6 +72,8 @@ while ($row_al = $result_Alunos->fetch(PDO::FETCH_ASSOC)) {
     $registro[] = $EmailAluno;
     $registro[] = "<button type='button' class='btn btn-outline-warning' id='$idAluno' onclick='editAluno($idAluno)'><i class='fas fa-pen'></i></button>";
     $registro[] = "<button type='button' class='btn btn-outline-danger' id='$idAluno' onclick='excluirAluno($idAluno)'><i class='fas fa-trash-alt'></i></button>";
+    $registro[] = "<button type='button' class='btn btn-outline-primary' id='$idAluno' onclick='excluirAluno($idAluno)'><i class='fas fa-file-pdf'></i></button>";
+
 
     $dados[] = $registro;
 }
